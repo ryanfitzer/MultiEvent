@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MultiEvents</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css" media="screen">
+      html,
+      body {
+          margin:0;
+          padding:0;
+      }
+      ul {
+          display:none;
+          list-style:none;
+          margin:0;
+          padding:0;
+      }
+      li span {
+          font-weight:bold;
+      }
+      #on,
+      #off,
+      #over,
+      #out {
+          padding:20px 0 10px 20px;
+      }
+      #on:after,
+      #off:after,
+      #over:after,
+      #out:after {
+          content:' ';
+          clear:both;
+          display:block;
+      }
+      .target {
+          float:left;
+          width:75px;
+          height:75px;
+          cursor:pointer;
+          text-align:center;
+          margin:0 10px 0 0;
+      }
+      #on .target {
+          background:red;
+      }
+      #off .target {
+          background:yellow;
+      }
+      #over .target {
+          background:blue;
+      }
+      #out .target {
+          background:green;
+      }
+      .target:target {
+          outline:4px solid grey;
+      }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ryanfitzer.github.io/MultiEvent/multiEvent.js"></script>
+    <script>
+    
+      $(function() {
+    
+          var onMe = multiEvent( 'on' )
+             , offMe = multiEvent( 'off' )
+             , overMe = multiEvent( 'over' )
+             , outMe = multiEvent( 'out' )
+             ;
+    
+          var results = $( '#results' )
+              , logEvent = $( '#event span' )
+              , logInput = $( '#input span' )
+              , logMatch = $( '#match span' )
+              ;
+        
+          var logger = function( e, obj ) {
+        
+              var origEvt = e.originalEvent
+                  , parent = $( e.target ).parent()
+                  ;
+        
+              e.preventDefault();
+              obj.resolve( e );
+        
+              results.appendTo( parent );
+
+              logEvent.html( origEvt.type );
+
+              if ( obj.isTouch ) logInput.html( 'touch' );
+              else logInput.html( 'touch' );
+
+              if ( obj.isMatch ) {
+                 logMatch.html( 'True' );
+                 logMatch.css( 'color', 'green' );
+              }
+              else {
+                 logMatch.html( 'False' );
+                 logMatch.css( 'color', 'red' );
+              }
+        
+              results.show();
+       
+              console.log( 'jQuery event:', e.type );
+              console.log( 'original event:', origEvt.type );
+              console.log( 'isTouch:', obj.isTouch );
+              console.log( 'isMouse:', obj.isMouse );
+              console.log( 'isMatch:', obj.isMatch );
+              console.log( 'changedTouches', origEvt.changedTouches )
+              console.log( 'pointerType:', origEvt.pointerType );
+              console.log( 'mozInputSource:', origEvt.mozInputSource );
+              console.log( 'webkitMovementX:', origEvt.webkitMovementX );
+              console.log( 'webkitMovementY:', origEvt.webkitMovementY );
+              console.log( obj );
+              console.log( e );
+              console.log( '------' );
+          }
+    
+         $( '#on .target' ).on( onMe.events.join( ' ' ), function( e ) { logger( e, onMe ) } ); 
+         $( '#off .target' ).on( offMe.events.join( ' ' ), function( e ) { logger( e, offMe ) } ); 
+         $( '#over .target' ).on( overMe.events.join( ' ' ), function( e ) { logger( e, overMe ) } ); 
+         $( '#out .target' ).on( outMe.events.join( ' ' ), function( e ) { logger( e, outMe ) } ); 
+      });
+      
+    </script>
+</head>
+<body>
+<ul id="results">
+  <li id="event">event: <span></span></li>
+  <li id="input">source: <span></span></li>
+  <li id="match">match: <span></span></li>
+</ul>
+<div id="on">
+    <div class="target">ON</div>
+</div>
+<div id="off">
+  <div class="target">OFF</div>
+</div>
+<div id="over">
+  <div class="target">OVER</div>
+</div>
+<div id="out">
+  <div class="target">OUT</div>
+</div>
+</body>
+</html>
