@@ -2,6 +2,7 @@
 
 A tool that parses out which events are supported in the browser's environment and flags the input used (touch or mouse), as well as if that input matches the event type. This check for a match is needed due to some mouse events incorrectly firing with a touch input.
 
+Give the [demo](http://ryanfitzer.github.io/MultiEvent/) a try.
 
 ## Behaviors
 
