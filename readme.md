@@ -12,7 +12,7 @@ I'm not doing any checkeing for generic pointer events since IE is the only brow
 
 Here's what events are supported in each bucket:
 
-```
+```js
 var behaviors = {  
     on: {  
         pointer:    'MSPointerDown',  
