@@ -95,4 +95,3 @@ Setup the listener (jQuery is assumed):
 - Document and build out custom behavior functionality
 - Other stuff I can't think of right now
 
-
