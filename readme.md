@@ -91,10 +91,9 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
 
 ## TODO
 
-- Test suite
-- AMD-ify
-- Add rubust event testing via Modernizr
-- More behaviors
-- Document and build out custom behavior functionality
-- Other stuff I can't think of right now
+- [ ] Add a test suite
+- [ ] Add custom Modernizr build for detecting touch
+- [ ] Convert to AMD
+- [ ] Add "move" behavior
+- [ ] Document and build out custom behavior API
 
