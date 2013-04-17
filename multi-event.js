@@ -1,3 +1,7 @@
+/*!
+ * Copyright (c) 2013 Ryan Fitzer
+ * License: (http://www.opensource.org/licenses/mit-license.php)
+ */
 /*jshint laxcomma:true, asi:true */
 (function() {
     
@@ -68,6 +72,8 @@
         };
     }
     
+    var debug = false;
+    
     var behaviors = {
         on: {
             pointer:    'MSPointerDown',
@@ -89,6 +95,11 @@
             pointer:    'MSPointerOut',
             mouse:      'mouseout'
         }
+    }
+    
+    function log() {
+        
+        if ( debug ) console.log( arguments );
     }
     
     function hasTouch() {
@@ -139,8 +150,10 @@
         return events;
     }
     
-    function MultiEvent( type ) {
-    
+    function MultiEvent( type, isDebug ) {
+        
+        debug = isDebug;
+        
         // Did they supply their own types object?
         if ( typeof type === 'object' ) {
             this.types = type;
@@ -190,23 +203,24 @@
                 
                 case types.pointer:
             
-                    // console.log( 'switch case: pointer; event: ', types.pointer );
+                    log( 'switch case: pointer; event: ', types.pointer );
                     if ( msSrc === msTouch ) this.isTouch = true;
                     if ( msSrc === msMouse ) this.isMouse = true;
                     break;
                 
                 case types.touch:
             
-                    // console.log( 'switch case: types.touch' );
+                    log( 'switch case: types.touch' );
                     this.isTouch = true;
                     break;
             
                 case types.mouse:
             
-                    // console.log( 'switch case: mouse; event: ', types.mouse );
+                    log( 'switch case: mouse; event: ', types.mouse );
                     // `mozSrc` can be `0` when the source could not be 
                     // determined. If that's the case, default to `source.mouse`
                     if ( mozSrc ) {
+                        log('entered mozSrc');
                         
                         if ( mozSrc === mozTouch ) {
                             this.isTouch = true;
@@ -224,16 +238,22 @@
                         // non-zero 99.99% of the time and the event continuosly fires.
                         // With a touch event on IOS, these will be undefined.
                         // TODO: Test iPad with mouse.
-                        if ( !origEvent.webkitMovementX && !origEvent.webkitMovementY ) {
-                            this.isTouch = true;
-                            this.isMatch = false;
-                            break;
+                        if ( 'webkitMovementX' in origEvent ) {
+                            
+                            log( 'entered webkitMovementX' );
+                            
+                            if ( !origEvent.webkitMovementX && !origEvent.webkitMovementY ) {
+                                
+                                this.isTouch = true;
+                                this.isMatch = false;
+                                break;
+                            }
                         }
                     }
                 
                 default:
             
-                    // console.log( 'switch case: default; event: ', evtType );
+                    log( 'switch case: default; event: ', evtType );
                     this.isMouse = true;
                     break;
             }
