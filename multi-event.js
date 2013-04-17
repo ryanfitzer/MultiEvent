@@ -72,6 +72,8 @@
         on: {
             pointer:    'MSPointerDown',
             touch:      'touchstart',
+            // Why not mousedown? FF on Win8 fires a both the touchstart and mousedown events, 
+            // but only the touchstart when the click event is used.
             mouse:      'click'
         },
         off: {
@@ -164,6 +166,7 @@
         resolve: function( evt ) {
 
             var types = this.types
+                , evtType = evt.type
                 , origEvent = evt.originalEvent
                 ;
             
@@ -183,24 +186,24 @@
             this.isTouch = false;
             this.isMouse = false;
             
-            switch( evt.type ) {
+            switch( evtType ) {
                 
                 case types.pointer:
             
-                    console.log( 'switch case: types.pointer' );
+                    // console.log( 'switch case: pointer; event: ', types.pointer );
                     if ( msSrc === msTouch ) this.isTouch = true;
                     if ( msSrc === msMouse ) this.isMouse = true;
                     break;
                 
                 case types.touch:
             
-                    console.log( 'switch case: types.touch' );
+                    // console.log( 'switch case: types.touch' );
                     this.isTouch = true;
                     break;
             
                 case types.mouse:
             
-                    console.log( 'switch case: types.mouse' );
+                    // console.log( 'switch case: mouse; event: ', types.mouse );
                     // `mozSrc` can be `0` when the source could not be 
                     // determined. If that's the case, default to `source.mouse`
                     if ( mozSrc ) {
@@ -230,7 +233,7 @@
                 
                 default:
             
-                    console.log( 'switch case: default' );
+                    // console.log( 'switch case: default; event: ', evtType );
                     this.isMouse = true;
                     break;
             }
