@@ -103,6 +103,9 @@
     }
     
     function hasTouch() {
+        
+        // TODO Use a cutom Modernizr build
+        if ( 'Modernizr' in window ) return Modernizr.touch;
         return ( ( 'ontouchstart' in window ) || window.DocumentTouch && document instanceof DocumentTouch );
     }
     
