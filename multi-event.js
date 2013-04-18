@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2013 Ryan Fitzer
+ * MultiEvent 0.5.0 | Copyright (c) 2013 Ryan Fitzer
  * License: (http://www.opensource.org/licenses/mit-license.php)
  */
 /*jshint laxcomma:true, asi:true */
@@ -9,7 +9,6 @@
     // Production steps of ECMA-262, Edition 5, 15.4.4.18
     // Reference: http://es5.github.com/#x15.4.4.18
     if ( !Array.prototype.forEach ) {
- 
         Array.prototype.forEach = function forEach( callback, thisArg ) {
  
             var T, k;
@@ -79,7 +78,8 @@
             pointer:    'MSPointerDown',
             touch:      'touchstart',
             // Why not mousedown? FF on Win8 fires a both the touchstart and mousedown events, 
-            // but only the touchstart when the click event is used.
+            // but only the touchstart when the click event is used. Event.preventDefault does
+            // not fix the issue.
             mouse:      'click'
         },
         off: {

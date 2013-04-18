@@ -13,25 +13,25 @@ I'm not doing any checkeing for generic pointer events since IE is the only brow
 Here's what events are supported in each bucket:
 
 ```js
-var behaviors = {  
-    on: {  
-        pointer:    'MSPointerDown',  
-        touch:      'touchstart',  
-        mouse:      'click'  
-    },  
-    off: {  
-        pointer:    'MSPointerUp',  
-        touch:      'touchend',  
-        mouse:      'mouseup'  
-    },  
-    over: {  
-        pointer:    'MSPointerOver',  
-        mouse:      'mouseover'  
-    },  
-    out: {  
-        pointer:    'MSPointerOut',  
-        mouse:      'mouseout'  
-    }  
+var behaviors = {
+    on: {
+        pointer:    'MSPointerDown',
+        touch:      'touchstart',
+        mouse:      'click'
+    },
+    off: {
+        pointer:    'MSPointerUp',
+        touch:      'touchend',
+        mouse:      'mouseup'
+    },
+    over: {
+        pointer:    'MSPointerOver',
+        mouse:      'mouseover'
+    },
+    out: {
+        pointer:    'MSPointerOut',
+        mouse:      'mouseout'
+    }
 }
 ```
 
