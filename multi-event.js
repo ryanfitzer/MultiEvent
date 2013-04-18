@@ -3,7 +3,7 @@
  * License: (http://www.opensource.org/licenses/mit-license.php)
  */
 /*jshint laxcomma:true, asi:true */
-(function() {
+;(function() {
     
     // https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach
     // Production steps of ECMA-262, Edition 5, 15.4.4.18
