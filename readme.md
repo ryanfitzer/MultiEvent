@@ -91,10 +91,9 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
 
 ## Roadmap
 
-- [ ] [Add a test suite](https://github.com/ryanfitzer/MultiEvent/issues/1)
-- [ ] [Add custom Modernizr build for detecting touch](https://github.com/ryanfitzer/MultiEvent/issues/2)
-- [ ] [Convert to AMD](https://github.com/ryanfitzer/MultiEvent/issues/3)
-- [ ] [Add "move" behavior](https://github.com/ryanfitzer/MultiEvent/issues/4)
-- [ ] [Build out custom behaviors API](https://github.com/ryanfitzer/MultiEvent/issues/5)
-- [ ] [Support both native and jQuery `event` objects to remove jQuery dependency](https://github.com/ryanfitzer/MultiEvent/issues/6)
+- [Add a test suite](https://github.com/ryanfitzer/MultiEvent/issues/1)
+- [Add custom Modernizr build for detecting touch](https://github.com/ryanfitzer/MultiEvent/issues/2)
+- [Convert to AMD](https://github.com/ryanfitzer/MultiEvent/issues/3)
+- [Add "move" behavior](https://github.com/ryanfitzer/MultiEvent/issues/4)
+- [Build out custom behaviors API](https://github.com/ryanfitzer/MultiEvent/issues/5)
 

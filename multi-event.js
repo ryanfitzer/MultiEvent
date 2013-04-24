@@ -1,5 +1,5 @@
 /*!
- * MultiEvent 0.5.0 | Copyright (c) 2013 Ryan Fitzer
+ * MultiEvent 0.6.0 | Copyright (c) 2013 Ryan Fitzer
  * License: (http://www.opensource.org/licenses/mit-license.php)
  */
 /*jshint laxcomma:true, asi:true */
@@ -110,7 +110,7 @@
     }
     
     // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/src/isEventSupported.js
-    // TODO: After AMD is implemented, replace with Modernizr.
+    // TODO: Replace with Modernizr.
     function hasEvent( name ) {
         return ( 'on' + name.toLowerCase() in document.documentElement );
     }
@@ -176,14 +176,14 @@
         
         /**
          * Determine the event source.
-         * @param evt {Object} A jQuery event object.
+         * @param evt {Object} The event object (can also be a jQuery event object).
          * @returns {Object} An object of source types with boolean values
          */
         resolve: function( evt ) {
 
             var types = this.types
                 , evtType = evt.type
-                , origEvent = evt.originalEvent
+                , origEvent = evt.originalEvent || evt
                 ;
             
             // http://msdn.microsoft.com/en-us/library/ie/hh772103.aspx

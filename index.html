@@ -76,7 +76,7 @@
         
           var logger = function( e, obj ) {
         
-              var origEvt = e.originalEvent
+              var origEvt = e.originalEvent || e
                   , parent = $( e.target ).parent()
                   ;
         
@@ -101,7 +101,7 @@
         
               results.show();
        
-              console.log( 'jQuery event:', e.type );
+              console.log( 'event type:', e.type );
               console.log( 'original event:', origEvt.type );
               console.log( 'isTouch:', obj.isTouch );
               console.log( 'isMouse:', obj.isMouse );
