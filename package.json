@@ -1,0 +1,19 @@
+{
+  "name": "MultiEvent",
+  "version": "0.6.0",
+  "description": "MultiEvent enables you to use the right event types in touch, mouse, or hybrid environments like Windows 8 devices.",
+  "author": {
+    "name": "Ryan Fitzer",
+    "email": "ryan@ryanfitzer.com",
+    "url": "http://ryanfitzer.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanfitzer/MultiEvent.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-requirejs": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}

@@ -1,14 +1,20 @@
-# About
+# MultiEvent
 
-A tool that parses out which events are supported in the browser's environment and flags the input used (touch or mouse), as well as if that input matches the event type. This check for a match is needed due to some mouse events incorrectly firing with a touch input.
+MultiEvent enables you to use the right event types in touch, mouse, pointer or hybrid environments (Windows 8 devices).
+
+MultiEvent determines which events are supported in the browser's environment and flags the input used (touch or mouse), including if the input matches the event type. This check for a match is needed due to some mouse events incorrectly firing with a touch input.
+
+MultiEvent uses the [UMD][umd] pattern to support [AMD][amd], as well as global implementations.
 
 Give the [demo](http://ryanfitzer.github.io/MultiEvent/) a try.
+
+Download [MultiEvent][download]
 
 ## Behaviors
 
 I've broken the events down onto behaviors: on, off, over, out. This covers the most basic interactions.
 
-I'm not doing any checkeing for generic pointer events since IE is the only browser that supports them currently. That will need to change as more browsers implement pointer events.
+I'm not doing any checking for generic pointer events since IE is the only browser that supports them currently. That will need to change as more browsers implement pointer events.
 
 Here's what events are supported in each bucket:
 
@@ -92,8 +98,11 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
 ## Roadmap
 
 - [Add a test suite](https://github.com/ryanfitzer/MultiEvent/issues/1)
-- [Add custom Modernizr build for detecting touch](https://github.com/ryanfitzer/MultiEvent/issues/2)
-- [Convert to AMD](https://github.com/ryanfitzer/MultiEvent/issues/3)
+- [Add custom Modernizr build for event detection](https://github.com/ryanfitzer/MultiEvent/issues/2)
 - [Add "move" behavior](https://github.com/ryanfitzer/MultiEvent/issues/4)
 - [Build out custom behaviors API](https://github.com/ryanfitzer/MultiEvent/issues/5)
 
+
+[umd]: https://github.com/umdjs/umd
+[amd]: https://github.com/amdjs/amdjs-api/wiki/AMD
+[download]: https://raw.github.com/ryanfitzer/MultiEvent/master/multi-event-min.js

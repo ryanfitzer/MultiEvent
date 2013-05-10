@@ -1,0 +1,51 @@
+html,
+body {
+    margin:0;
+    padding:0;
+}
+ul {
+    display:none;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+li span {
+    font-weight:bold;
+}
+#on,
+#off,
+#over,
+#out {
+    padding:20px 0 10px 20px;
+}
+#on:after,
+#off:after,
+#over:after,
+#out:after {
+    content:' ';
+    clear:both;
+    display:block;
+}
+.target {
+    float:left;
+    width:75px;
+    height:75px;
+    cursor:pointer;
+    text-align:center;
+    margin:0 10px 0 0;
+}
+#on .target {
+    background:red;
+}
+#off .target {
+    background:yellow;
+}
+#over .target {
+    background:blue;
+}
+#out .target {
+    background:green;
+}
+.target:target {
+    outline:4px solid grey;
+}
