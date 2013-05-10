@@ -2,9 +2,9 @@
 
 MultiEvent enables you to use the right event types in touch, mouse, pointer or hybrid environments (Windows 8 devices).
 
-MultiEvent determines which events are supported in the browser's environment and flags the input used (touch or mouse), including if the input matches the event type. This check for a match is needed due to some mouse events incorrectly firing with a touch input.
+It determines which events are supported in the browser's environment and flags the input used (touch or mouse), including if the input matches the event type. This check for a match is needed due to some mouse events incorrectly firing with a touch input.
 
-MultiEvent uses the [UMD][umd] pattern to support [AMD][amd], as well as global implementations.
+Bonus: MultiEvent uses the [UMD][umd] pattern to support [AMD][amd], as well as global implementations.
 
 Give the [demo][demo] a try.
 
