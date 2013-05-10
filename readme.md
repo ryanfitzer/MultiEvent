@@ -6,7 +6,7 @@ MultiEvent determines which events are supported in the browser's environment an
 
 MultiEvent uses the [UMD][umd] pattern to support [AMD][amd], as well as global implementations.
 
-Give the [demo](http://ryanfitzer.github.io/MultiEvent/) a try.
+Give the [demo][demo] a try.
 
 Download [MultiEvent][download]
 
@@ -105,4 +105,5 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
 
 [umd]: https://github.com/umdjs/umd
 [amd]: https://github.com/amdjs/amdjs-api/wiki/AMD
+[demo]: http://ryanfitzer.github.io/MultiEvent/demo
 [download]: https://raw.github.com/ryanfitzer/MultiEvent/master/multi-event-min.js
