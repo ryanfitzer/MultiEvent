@@ -10,6 +10,7 @@ Give the [demo][demo] a try.
 
 Download [MultiEvent][download]
 
+
 ## Behaviors
 
 I've broken the events down onto behaviors: on, off, over, out. This covers the most basic interactions.
@@ -40,6 +41,7 @@ var behaviors = {
     }
 }
 ```
+
 
 ## Usage
 
