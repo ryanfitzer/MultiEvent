@@ -1,32 +1,43 @@
 module.exports = function( grunt ) {
 
-    
     grunt.initConfig({
         
         pkg: grunt.file.readJSON( 'package.json' ),
         
+        banner: '/*! <%= pkg.name %> <%= pkg.version %> | Copyright (c) 2013 Ryan Fitzer | License: (http://www.opensource.org/licenses/mit-license.php) */\n',
+        
         requirejs: {
-            compile: {
+            options: {
+                baseUrl: './src',
+                skipModuleInsertion: true,
+                onBuildWrite: function ( moduleName, path, contents ) {
+                    return contents.replace( /'multiEvent',/, '' );
+                }
+            },
+            min: {
                 options: {
-                    baseUrl: './src',
-                    name: 'multi-event',
-                    out: 'multi-event-min.js',
-                    skipModuleInsertion: true,
-                    onBuildWrite: function ( moduleName, path, contents ) {
-                        return contents.replace( /'multi-event',/, '' );
-                    },
+                    name: 'multiEvent',
+                    out: 'multiEvent.min.js'
+                }
+            },
+            max: {
+                options: {
+                    optimize: 'none',
+                    name: 'multiEvent',
+                    out: 'multiEvent.js'
                 }
             }
         },
         
         concat: {
-            dist: {
-                src: [ 'multi-event-min.js' ],
-                dest: 'multi-event-min.js'
-            },
             options: {
-                stripBanners: true,
-                banner: '/*! <%= pkg.name %> <%= pkg.version %> | Copyright (c) 2013 Ryan Fitzer | License: (http://www.opensource.org/licenses/mit-license.php) */'
+                banner: '<%= banner %>'
+            },
+            all: {
+                files: {
+                    'multiEvent.js': [ 'multiEvent.js' ],
+                    'multiEvent.min.js': [ 'multiEvent.min.js' ],
+                }
             }
         }
         

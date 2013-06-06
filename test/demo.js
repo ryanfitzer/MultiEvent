@@ -1,4 +1,4 @@
-require( [ '../src/multi-event' ], function( multiEvent ) {
+require( [ '../src/multiEvent' ], function( multiEvent ) {
 
      var onMe = multiEvent( 'on' )
          , offMe = multiEvent( 'off' )
