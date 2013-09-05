@@ -3,17 +3,14 @@
 
     if ( typeof define === 'function' && define.amd ) {
 
-        define([
-            '../libs/has-feature',
-            '../libs/array.ForEach',
-            '../libs/array.isArray'
-        ], factory );
+        define(factory );
+        
     } else {
 
         root.multiEvent = factory( root.detect );
     }
     
-}( this, function ( detect ) {
+}( this, function () {
 
     var debug = false;
 
@@ -40,6 +37,22 @@
             mouse:      'mouseout'
         }
     }
+    
+    var detect = {
+        
+        // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
+        // TODO: Replace with Modernizr.
+        hasTouch: function() {    
+            if ( 'Modernizr' in window ) return Modernizr.touch;
+            return ( ( 'ontouchstart' in window ) || window.DocumentTouch && document instanceof DocumentTouch );
+        },
+
+        // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/src/isEventSupported.js
+        // TODO: Replace with Modernizr.
+        hasEvent: function( name ) {
+            return ( 'on' + name.toLowerCase() in document.documentElement );
+        }
+    };
 
     function log() {
 
@@ -73,11 +86,16 @@
         if ( types.touch && detect.hasTouch ) push( types.touch );
 
         if ( types.mouse ) {
+            
             if ( !types.mouse.isArray && detect.hasEvent( types.mouse ) ) events.push( types.mouse );
             else {
-                types.mouse.forEach( function( item ) {
-                    if ( detect.hasEvent( item ) ) events.push( item );
-                });
+                
+                if ( !types.mouse.isArray ) events.push( types.mouse );
+                else {
+                    types.mouse.forEach( function( item ) {
+                        if ( detect.hasEvent( item ) ) events.push( item );
+                    });
+                }
             }
         }
 

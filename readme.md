@@ -79,7 +79,7 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
         alert( 'All is good!' );  
     }  
     else {  
-        alert( 'I feel wonkey!' )  
+        alert( 'I feel wonky!' )  
     }  
 });
 ```

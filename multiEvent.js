@@ -1,70 +1,17 @@
-/*! MultiEvent 0.6.0 | Copyright (c) 2013 Ryan Fitzer | License: (http://www.opensource.org/licenses/mit-license.php) */
-
-( function ( root, factory ) {
-
-    if ( typeof define === 'function' && define.amd ) {
-
-        define('../libs/has-feature', factory );
-    } else {
-        
-        root.detect = factory();
-    }
-    
-}( this, function () {
-    
-    // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
-    // TODO: Replace with Modernizr.
-    function hasTouch() {    
-        if ( 'Modernizr' in window ) return Modernizr.touch;
-        return ( ( 'ontouchstart' in window ) || window.DocumentTouch && document instanceof DocumentTouch );
-    }
-
-    // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/src/isEventSupported.js
-    // TODO: Replace with Modernizr.
-    function hasEvent( name ) {
-        return ( 'on' + name.toLowerCase() in document.documentElement );
-    }
-
-    return {
-        hasTouch: hasTouch,
-        hasEvent: hasEvent
-    }
-}));
-// https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach
-if ( !Array.prototype.forEach ) {
-
-    Array.prototype.forEach = function( fn, scope ) {
-    
-        for( var i = 0, len = this.length; i < len; ++i ) {
-        
-            fn.call( scope, this[i], i, this );
-        }
-    }
-};
-// https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/isArray
-if( !Array.isArray ) {
-
-    Array.isArray = function ( vArg ) {
-    
-        return Object.prototype.toString.call( vArg ) === "[object Array]";
-    };
-};
+/*! MultiEvent 0.7.0 | Copyright (c) 2013 Ryan Fitzer | License: (http://www.opensource.org/licenses/mit-license.php) */
 /*jshint laxcomma:true, asi:true */
 ( function ( root, factory ) {
 
     if ( typeof define === 'function' && define.amd ) {
 
-        define([
-            '../libs/has-feature',
-            '../libs/array.ForEach',
-            '../libs/array.isArray'
-        ], factory );
+        define(factory );
+        
     } else {
 
         root.multiEvent = factory( root.detect );
     }
     
-}( this, function ( detect ) {
+}( this, function () {
 
     var debug = false;
 
@@ -91,6 +38,22 @@ if( !Array.isArray ) {
             mouse:      'mouseout'
         }
     }
+    
+    var detect = {
+        
+        // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
+        // TODO: Replace with Modernizr.
+        hasTouch: function() {    
+            if ( 'Modernizr' in window ) return Modernizr.touch;
+            return ( ( 'ontouchstart' in window ) || window.DocumentTouch && document instanceof DocumentTouch );
+        },
+
+        // Overly simplified. See https://github.com/Modernizr/Modernizr/blob/master/src/isEventSupported.js
+        // TODO: Replace with Modernizr.
+        hasEvent: function( name ) {
+            return ( 'on' + name.toLowerCase() in document.documentElement );
+        }
+    };
 
     function log() {
 
@@ -124,11 +87,16 @@ if( !Array.isArray ) {
         if ( types.touch && detect.hasTouch ) push( types.touch );
 
         if ( types.mouse ) {
+            
             if ( !types.mouse.isArray && detect.hasEvent( types.mouse ) ) events.push( types.mouse );
             else {
-                types.mouse.forEach( function( item ) {
-                    if ( detect.hasEvent( item ) ) events.push( item );
-                });
+                
+                if ( !types.mouse.isArray ) events.push( types.mouse );
+                else {
+                    types.mouse.forEach( function( item ) {
+                        if ( detect.hasEvent( item ) ) events.push( item );
+                    });
+                }
             }
         }
 
