@@ -137,6 +137,9 @@
                 ;
 
             // http://msdn.microsoft.com/en-us/library/ie/hh772103.aspx
+            /*
+                TODO Support unprefixed events https://coderwall.com/p/mfreca
+            */
             var msSrc = origEvent.pointerType
                 , msTouch = origEvent.MSPOINTER_TYPE_TOUCH
                 , msMouse = origEvent.MSPOINTER_TYPE_MOUSE
