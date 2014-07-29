@@ -1,6 +1,6 @@
 {
   "name": "MultiEvent",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "MultiEvent enables you to use the right event types in touch, mouse, or hybrid environments like Windows 8 devices.",
   "author": {
     "name": "Ryan Fitzer",

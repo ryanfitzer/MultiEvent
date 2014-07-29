@@ -48,39 +48,39 @@ var behaviors = {
 Instantiate a behavior type:
 
 ```js
-// returns and array of events  
+// returns and array of events
 var onMe = multiEvent( 'on' );
 ```
 
 Setup the listener (jQuery is assumed):
 
 ```js
-$( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {  
-    
-    // Make sure in hybrid enviroments that  
-    // only the first event hanlder is called.  
-    e.preventDefault();  
-  
-    // Tell our instance to generate the needed info about the event.  
-    onMe.resolve( e );  
-  
-    // Flags for input sources  
-    if ( onMe.isTouch ) {  
-        alert( 'Input source was a touch!' );  
-    }  
-    else if ( onMe.isMouse ) {  
-        alert( 'Input source was a mouse!' );  
-    }  
-  
-    // Did the input source match the event that was fired?  
-    // Certain mouse events will incorrectly fire when the   
-    // input was a touch.  
-    if ( onMe.isMatch ) {  
-        alert( 'All is good!' );  
-    }  
-    else {  
-        alert( 'I feel wonky!' )  
-    }  
+$( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
+
+    // Make sure in hybrid enviroments that
+    // only the first event hanlder is called.
+    e.preventDefault();
+
+    // Tell our instance to generate the needed info about the event.
+    onMe.resolve( e );
+
+    // Flags for input sources
+    if ( onMe.isTouch ) {
+        alert( 'Input source was a touch!' );
+    }
+    else if ( onMe.isMouse ) {
+        alert( 'Input source was a mouse!' );
+    }
+
+    // Did the input source match the event that was fired?
+    // Certain mouse events will incorrectly fire when the
+    // input was a touch.
+    if ( onMe.isMatch ) {
+        alert( 'All is good!' );
+    }
+    else {
+        alert( 'I feel wonky!' )
+    }
 });
 ```
 
@@ -94,7 +94,7 @@ $( '#some-element' ).on( onMe.events.join( ' ' ), function( e ) {
 
 - [pointerType property (Internet Explorer)](http://msdn.microsoft.com/en-us/library/ie/hh772359.aspx)
 
-- [event.mozInputSource - Document Object Model (DOM) | MDN](https://developer.mozilla.org/en-US/docs/DOM/event.mozInputSource) 
+- [event.mozInputSource - Document Object Model (DOM) | MDN](https://developer.mozilla.org/en-US/docs/DOM/event.mozInputSource)
 
 
 ## Roadmap
